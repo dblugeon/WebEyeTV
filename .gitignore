@@ -2,3 +2,7 @@ nbproject/private/private.properties
 nbproject/private/rake-d.txt
 nbproject/project.properties
 nbproject/project.xml
+*.log
+nbproject/private/private.xml
+config/deploy.rb
+Capfile
