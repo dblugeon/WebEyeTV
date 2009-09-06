@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
 
   @eyetv_ref
+  protected
   def eyetv_instance
     @eyetv_ref = EyeTV::EyeTV.new if @eyetv_ref == nil
   end
