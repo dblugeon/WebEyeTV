@@ -1,5 +1,6 @@
 # Filters added to this controller apply to all controllers in the application.
 # Likewise, all the methods added will be available for all controllers.
+require('eyetv')
 include EyeTV
 
 class ApplicationController < ActionController::Base
@@ -14,8 +15,8 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
 
-  @instance
+  @eyetv_ref
   def eyetv_instance
-    @instance = EyeTV::EyeTV.new if @instance == nil
+    @eyetv_ref = EyeTV::EyeTV.new if @eyetv_ref == nil
   end
 end
