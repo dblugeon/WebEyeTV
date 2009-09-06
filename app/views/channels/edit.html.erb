@@ -1,2 +1,16 @@
-<h1>Channels#edit</h1>
-<p>Find me in app/views/channels/edit.html.erb</p>
+<h1><%=t(:edit_channel, :channel_name => @channel.name) -%> </h1>
+<% form_tag "/channels/".concat(@channel.channel_number), :method =>"put" do -%>
+  <p>
+    <%= label_tag "channel_number", t(:channel_number) -%>
+    <%= text_field_tag "channel_number", @channel.channel_number, :disabled =>"true" -%>
+  </p>
+  <p>
+    <%= label_tag "name", t(:channel_number) -%>
+    <%= text_field_tag "name", @channel.name -%>
+  </p>
+  <p>
+    <%= label_tag "enabled", t(:active) -%>
+    <%= check_box_tag "enabled", @channel.enabled?, @channel.enabled?  -%>
+  </p>
+  <%= submit_tag %>
+<%end -%>

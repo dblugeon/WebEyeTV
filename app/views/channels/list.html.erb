@@ -7,13 +7,20 @@
     <tr>
       <th><%=t :channel_number -%></th>
       <th><%=t :name -%></th>
-      <th><%=t :enabled -%></th>
+      <th><%=t :active -%></th>
+      <th><%=t :actions -%> </th>
     </tr>
     <% for chan in @channels  -%>
     <tr>
       <td><%= chan.channel_number -%> </td>
       <td><%= chan.name -%></td>
       <td><%= chan.enabled? ? t(:s_yes) : t(:s_no) -%> </td>
+      <td>
+        <ul>
+          <li><%= link_to t(:show), :action=>"show", :id => chan.channel_number -%></li>
+          <li><%= link_to t(:edit), :action=>"edit", :id => chan.channel_number -%></li>
+        </ul>
+      </td>
     </tr>
     <% end -%>    
   </table>

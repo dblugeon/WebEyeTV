@@ -18,6 +18,9 @@ class ChannelsController < ApplicationController
   end
 
   def edit
+    self.logger.debug "value of params[:id] = #{params[:id]}"
+    @channel = eyetv_instance.find_by_id(:channel, params[:id].to_i)
+    self.logger.debug "value of @channel = #{@channel}"
   end
 
   def update
