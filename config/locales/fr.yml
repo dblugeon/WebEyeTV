@@ -11,3 +11,4 @@ fr:
   show: "afficher"
   edit: "editer"
   edit_channel: "Edition de la chaîne : {{channel_name}}"
+  back: "retour"

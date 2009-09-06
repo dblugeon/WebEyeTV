@@ -1,16 +1,22 @@
 <h1><%=t(:edit_channel, :channel_name => @channel.name) -%> </h1>
-<% form_tag "/channels/".concat(@channel.channel_number), :method =>"put" do -%>
+<% form_tag "/channels/update/".concat(@channel.channel_number.to_s), :method =>"put" do -%>
   <p>
     <%= label_tag "channel_number", t(:channel_number) -%>
     <%= text_field_tag "channel_number", @channel.channel_number, :disabled =>"true" -%>
   </p>
   <p>
-    <%= label_tag "name", t(:channel_number) -%>
+    <%= label_tag "name", t(:name) -%>
     <%= text_field_tag "name", @channel.name -%>
   </p>
   <p>
     <%= label_tag "enabled", t(:active) -%>
-    <%= check_box_tag "enabled", @channel.enabled?, @channel.enabled?  -%>
+    <%= check_box_tag "enabled", true, @channel.enabled?  -%>
   </p>
-  <%= submit_tag %>
+  <%= hidden_field_tag "id", @channel.channel_number %>
+  <%= submit_tag  %>
 <%end -%>
+  <p>
+<%= link_to t(:show), :action=>"show", :id=> @channel.channel_number -%>
+ 
+<%= link_to t(:back), :action=>"list" -%>
+  </p>
