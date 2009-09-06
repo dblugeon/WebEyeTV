@@ -1,0 +1,21 @@
+<h1><%=t :list_of %> <%=t :channels %></h1>
+
+<% if @channels.empty? -%>
+  <%=t :no_channels -%>
+<%  else %>
+  <table>
+    <tr>
+      <th><%=t :channel_number -%></th>
+      <th><%=t :name -%></th>
+      <th><%=t :enabled -%></th>
+    </tr>
+    <% for chan in @channels  -%>
+    <tr>
+      <td><%= chan.channel_number -%> </td>
+      <td><%= chan.name -%></td>
+      <td><%= chan.enabled? ? t(:yes) : t(:no) -%> </td>
+    </tr>
+    <% end -%>    
+  </table>
+<% end -%>
+<br/>

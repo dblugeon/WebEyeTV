@@ -1,2 +1,9 @@
 fr:
   hello: "Bonjour le monde"
+  list_of: "liste de"
+  channels: "chaînes"
+  name: "Nom"
+  channel_number: "Numéro"
+  enabled: "active"
+  yes: "oui"
+  no: "non"
