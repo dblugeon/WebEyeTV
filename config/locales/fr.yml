@@ -5,5 +5,5 @@ fr:
   name: "Nom"
   channel_number: "Numéro"
   enabled: "active"
-  yes: "oui"
-  no: "non"
+  s_yes: "oui"
+  s_no: "non"
