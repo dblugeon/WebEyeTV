@@ -1,4 +1,9 @@
 class ChannelsController < ApplicationController
+
+  def index
+    redirect_to :action => "list"
+  end
+
   def list
     @channels = eyetv_instance.channels
   end
