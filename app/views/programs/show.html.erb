@@ -1,0 +1,43 @@
+<h1><%=t(:show_program, :program_title => @program.title) -%></h1>
+<p>
+	<b><%=t(:title) -%> :</b>
+	<%= @program.title %>
+</p>
+<p>
+	<b><%=t(:start_time) -%> :</b>
+	<%= @program.start_time %>
+</p>
+<p>
+	<b><%=t(:duration) -%> :</b>
+	<%= @program.duration %>
+</p>
+<p>
+	<b><%=t(:description) -%> :</b>
+	<%= @program.description %>
+</p>
+<p>
+	<b><%=t(:active) -%> :</b>
+	<%= @program.enabled? ? t(:s_yes) : t(:s_no) -%>
+</p>
+<p>
+	<b><%=t(:channel_number) -%> :</b>
+	<%= @program.channel_number %>
+</p>
+<p>
+	<b><%=t(:input_source) -%> :</b>
+	<%= @program.input_source %>
+</p>
+<p>
+	<b><%=t(:repeats) -%> :</b>
+	<%= @program.repeats %>
+</p>
+<p>
+	<b><%=t(:quality) -%> :</b>
+	<%= @program.quality %>
+</p>
+
+<p>
+<%= link_to t(:edit), edit_program_path(@program.uid)%> | <%=link_to t(:back), programs_url %>
+</p>
+
+	
