@@ -1,2 +1,48 @@
-<h1>Programs#edit</h1>
-<p>Find me in app/views/programs/edit.html.erb</p>
+<h1><%=t(:edit_program, :program_title => @program.title) -%> </h1>
+<% form_tag program_url(@program.uid.to_s), :method =>"put" do -%>
+  <p>
+    <%= label_tag "uid", "uid" -%> :
+    <%= text_field_tag "uid", @program.uid, :disabled =>"true" -%>
+  </p>
+  <p>
+    <%= label_tag "title", t(:title) -%> :
+    <%= text_field_tag "title", @program.title -%>
+  </p>
+  <p>
+    <%= label_tag "start_time", t(:start_time) -%> :
+    <%= select_datetime(@program.start_time, :include_blank => true, :add_month_numbers =>1) -%>
+  </p>
+  <p>
+    <%= label_tag "duration", t(:duration) -%> :
+    <%= text_field_tag "duration", @program.duration -%>
+  </p>
+  <p>
+    <%= label_tag "description", t(:description) -%> :
+    <%= text_area_tag "description", @program.description, :size => "50x5" -%>
+  </p>
+  <p>
+    <%= label_tag "enabled", t(:active) -%> :
+    <%= check_box_tag "enabled", true, @program.enabled?  -%>
+  </p>
+  <p>
+    <%= label_tag "program[channel_number]", t(:channel_number) -%> :
+	<%= select(nil , "channel_number", @channels.map {|chan| [chan.name, chan.channel_number]}, :selected =>@program.channel_number) %>
+  </p>
+  <p>
+    <%= label_tag "input_source", t(:input_source) -%> :
+	<%= select(nil , "input_source", @input_sources.map {|source| [source.to_s.gsub('_', ' ').capitalize, source]}, :selected =>@program.input_source) %>
+  </p>
+  <p>
+    <%= label_tag "repeats", t(:repeats) -%> :
+	<%= select(nil , "repeats", @repeats.map {|value| [value.to_s.gsub('_', ' ').capitalize, value]}, :selected => @program.repeats) %>
+  </p>
+  <p>
+    <%= label_tag "quality", t(:quality) -%> :
+	<%= select(nil , "quality", @quality.map {|value| [value.to_s.gsub('_', ' ').capitalize, value]}, :selected => @program.quality) %>
+  </p>
+  <%= hidden_field_tag "id", @program.uid %>
+  <%= submit_tag  %>
+<%end -%>
+  <p>
+	<%=link_to t(:show), program_url(@program.uid) %> | <%= link_to t(:back), programs_path -%>
+  </p>

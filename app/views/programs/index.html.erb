@@ -16,13 +16,14 @@
     <tr>
       <td><%= prog.channel_number -%> </td>
       <td><%= prog.title -%></td>
-	  <td><%= prog.start_time -%></td>
+	  <td><%=l prog.start_time -%></td>
 	  <td><%= prog.duration -%></td>
       <td><%= prog.enabled? ? t(:s_yes) : t(:s_no) -%> </td>
       <td>
         <ul>
 		  <li><%= link_to t(:show), program_url(prog.uid) %></li>
           <li><%= link_to t(:edit), edit_program_path(prog.uid) -%></li>
+		  <li><%=button_to t(:delete), program_url(prog.uid), :method => "delete", :confirm => t(:are_you_sure, :type => t(:the_program), :name => prog.title) %></li>
         </ul>
       </td>
     </tr>
