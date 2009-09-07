@@ -1,0 +1,13 @@
+defaults: &defaults
+  perform_authentication: true
+  username: admin
+  password: secret
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
