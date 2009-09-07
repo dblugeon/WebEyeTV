@@ -1,5 +1,5 @@
 <h1><%=t(:edit_channel, :channel_name => @channel.name) -%> </h1>
-<% form_tag "/channels/update/".concat(@channel.channel_number.to_s), :method =>"put" do -%>
+<% form_tag channel_url(@channel.channel_number.to_s), :method =>"put" do -%>
   <p>
     <%= label_tag "channel_number", t(:channel_number) -%>
     <%= text_field_tag "channel_number", @channel.channel_number, :disabled =>"true" -%>
@@ -16,7 +16,5 @@
   <%= submit_tag  %>
 <%end -%>
   <p>
-<%= link_to t(:show), :action=>"show", :id=> @channel.channel_number -%>
- 
-<%= link_to t(:back), :action=>"list" -%>
+	<%= link_to t(:back), channels_path -%>
   </p>

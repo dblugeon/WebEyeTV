@@ -1,21 +1,7 @@
 class ChannelsController < ApplicationController
 
   def index
-    redirect_to :action => "list"
-  end
-
-  def list
     @channels = eyetv_instance.channels
-  end
-
-  def new
-  end
-
-  def create
-  end
-
-  def show
-    check_channel
   end
 
   def edit
@@ -24,7 +10,6 @@ class ChannelsController < ApplicationController
 
   def update
     check_channel
-    logger.debug "value of params #{params} to merge"
     if (params[:enabled] == nil)
       @channel.enabled= false
     else params[:enabled]
