@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
   protected
   def eyetv_instance
     @eyetv_ref = EyeTV::EyeTV.new if @eyetv_ref == nil
+    logger.debug "value of eyetv_ref = #{@eyetv_ref}"
+    @eyetv_ref
   end
 
   def authenticate
