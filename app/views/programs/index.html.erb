@@ -3,6 +3,8 @@
 <% if @programs.empty? -%>
   <%=t :no_programs -%>
 <%  else %>
+  <p><%= t(:numbers_programs, :count =>@programs.size )%></p>
+
   <table>
     <tr>
       <th><%=t :channel_number -%></th>

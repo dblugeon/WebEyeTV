@@ -32,6 +32,9 @@ fr:
   are_you_sure: "Etes-vous sûr de vouloir supprimer {{type}} '{{name}}'"
   episode: "épisode"
   busy: occupé
+  numbers_recordings: "Il y a {{count}} enregistrement(s)"
+  numbers_programs: "Il y a {{count}} programmation(s)"
+  numbers_channels: "Il y a {{count}} chaine(s)"
 
   date:
     formats:
