@@ -5,31 +5,20 @@ class ChannelsController < ApplicationController
   end
 
   def edit
-    check_channel
+    @channel = check_eyetv_object(:channel, params[:id])
+    redirect_to_404(@channel)
   end
 
   def update
-    check_channel
-    if (params[:enabled] == nil)
-      @channel.enabled= false
-    else params[:enabled]
-      @channel.enabled= true
+    @channel = check_eyetv_object(:channel, params[:id])
+    if(params[:enabled] == nil)
+      params[:enabled] = false
     end
-    @channel.name = params[:name]
+    update_eyetv_object(@channel, params)
     redirect_to :action=>"index"
   end
 
   def destroy
   end
 
-  private
-  def check_channel
-    self.logger.debug "value of params[:id] = #{params[:id]}"
-    @channel = eyetv_instance.find_by_id(:channel, params[:id].to_i)
-    self.logger.debug "value of @channel = #{@channel}"
-    if @channel == nil
-      render :file => "#{RAILS_ROOT}/public/404.html",
-        :status => 404 and return
-    end
-  end
 end

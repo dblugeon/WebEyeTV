@@ -31,4 +31,40 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def update_eyetv_object(eyetv_object, params)
+    if(params == nil)
+      raise "params is nil"
+    end
+    if(not eyetv_object.is_a?(EyeTV::Recording) and not eyetv_object.is_a?(EyeTV::Program) and not eyetv_object.is_a?(EyeTV::Channel))
+      raise "#{eyetv_object} is not an rb-eyetv object"
+    end
+    if(params)
+      params.each do |key, value|
+        if (eyetv_object.respond_to?(key) and eyetv_object.method(key).arity == 1)
+          logger.debug "call #{key} with value : #{value}"
+          eyetv_object.send(key, value)
+        elsif (eyetv_object.respond_to?("#{key}=") and eyetv_object.method("#{key}=").arity == 1)
+          logger.debug "call #{key}= with value : #{value}"
+          eyetv_object.send("#{key}=", value)
+        else
+          logger.debug "#{eyetv_object.class} class doesn't respond to #{key}"
+        end
+      end
+    end
+  end
+
+  def check_eyetv_object(type, id)
+    self.logger.debug "value of id = #{id}"
+    eyetv_obj = eyetv_instance.find_by_id(type.to_sym, id.to_i)
+    self.logger.debug "value of eyetv_obj = #{eyetv_obj}"
+    eyetv_obj
+  end
+
+  def redirect_to_404(eyetv_obj)
+    if eyetv_obj == nil
+      render :file => "#{RAILS_ROOT}/public/404.html",
+        :status => 404 and return
+    end
+  end
 end
