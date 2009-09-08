@@ -1,0 +1,31 @@
+<h1><%=t :list_of %> <%=t :recordings %></h1>
+
+<% if @recordings.empty? -%>
+  <%=t :no_recordings -%>
+<%  else %>
+  <table>
+    <tr>
+      <th><%=t :channel_number -%></th>
+      <th><%=t :name -%></th>
+      <th><%=t :start_time -%></th>
+      <th><%=t :duration -%></th>
+      <th><%=t :actions -%> </th>
+    </tr>
+    <% for record in @recordings  -%>
+    <tr>
+      <td><%= record.channel_number -%> </td>
+      <td><%= record.title -%></td>
+	  <td><%=l record.start_time -%></td>
+	  <td><%= record.duration -%></td>
+      <td>
+        <ul>
+		  <li><%= link_to t(:show), recording_url(record.uid) %></li>
+          <li><%= link_to t(:edit), edit_recording_path(record.uid) -%></li>
+		  <li><%=button_to t(:delete), recording_url(record.uid), :method => "delete", :confirm => t(:are_you_sure, :type => t(:the_recording), :name => record.title) %></li>
+        </ul>
+      </td>
+    </tr>
+    <% end -%>    
+  </table>
+<% end -%>
+<br/>

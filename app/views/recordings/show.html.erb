@@ -1,0 +1,38 @@
+<h1><%=t(:show_recording, :recording_title => @recording.title) -%></h1>
+<p>
+	<b><%=t(:title) -%> :</b>
+	<%= @recording.title %>
+</p>
+<p>
+	<b><%=t(:episode) -%> :</b>
+	<%= @recording.name %>
+</p>
+<p>
+	<b><%=t(:description) -%> :</b>
+	<%= @recording.description %>
+</p>
+<p>
+	<b><%=t(:start_time) -%> :</b>
+	<%=l @recording.start_time %>
+</p>
+<p>
+	<b><%=t(:duration) -%> :</b>
+	<%= @recording.duration %>
+</p>
+<p>
+	<b><%=t(:busy) -%> :</b>
+	<%= @recording.busy? ? t(:s_yes) : t(:s_no) -%>
+</p>
+<p>
+	<b><%=t(:channel_number) -%> :</b>
+	<%= @recording.channel_number %>
+</p>
+<p>
+	<b><%=t(:quality) -%> :</b>
+	<%= @recording.quality %>
+</p>
+
+<p>
+<%= link_to t(:edit), edit_recording_path(@recording.uid)%> | <%=link_to t(:back), recordings_url %>
+</p>
+

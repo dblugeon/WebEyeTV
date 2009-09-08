@@ -2,6 +2,7 @@ fr:
   hello: "Bonjour le monde"
   list_of: "Liste de"
   channels: "chaînes"
+  recordings : "enregistrements"
   name: "nom"
   channel_number: "numéro de chaîne"
   active: "active"
@@ -12,10 +13,11 @@ fr:
   edit: "éditer"
   delete: supprimer
   edit_channel: "Edition de la chaîne : {{channel_name}}"
-  edit_program: "Edition du programme : {{program_title}}"
-  show_program: "Détails du programme : {{program_title}}"
+  edit_program: "Edition de la programmation : {{program_title}}"
+  show_program: "Détails de la programmation : {{program_title}}"
+  show_recording: "Détails de l'enregistrement : {{recording_title}}"
   back: "retour"
-  programs: "programmes"
+  programs: "programmations"
   description: "description"
   start_time: "date de démarrage"
   duration: "durée"
@@ -23,8 +25,14 @@ fr:
   input_source: "source"
   repeats: "répétition"
   quality: "qualité"
-  the_program: "le programme"
+  the_program: "la programmation"
+  the_recording: "l'enregistrement"
+  no_recordings: "Aucun enregistrement"
+  no_programs: "Aucune programmation"
   are_you_sure: "Etes-vous sûr de vouloir supprimer {{type}} '{{name}}'"
+  episode: "épisode"
+  busy: occupé
+
   date:
     formats:
       default: "%d/%m/%Y"
