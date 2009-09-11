@@ -55,7 +55,10 @@ a:hover { color: #fff; background-color:#000; }
 #menu {
 	margin-top: 15%;
 	float: left;
-	margin-right : 4%;
+}
+
+#container {
+	margin-left: 15%;
 }
 
 table {
