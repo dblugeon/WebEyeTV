@@ -4,7 +4,7 @@
   <%=t :no_programs -%>
 <%  else %>
   <p><%= t(:numbers_programs, :count =>@programs.size )%></p>
-
+<%= link_to t(:create_new_program), new_program_url -%>
   <table>
     <tr>
       <th><%=link_to "^", programs_url(:order_by=> :channel_number, :order=>:asc) %> <%=t :channel_number -%> <%=link_to "v", programs_url(:order_by=> :channel_number, :order=>:desc) %></th>

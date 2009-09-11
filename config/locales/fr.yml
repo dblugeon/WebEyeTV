@@ -35,6 +35,11 @@ fr:
   numbers_recordings: "Il y a {{count}} enregistrement(s)"
   numbers_programs: "Il y a {{count}} programmation(s)"
   numbers_channels: "Il y a {{count}} chaine(s)"
+  create_program: "création d'un nouveau programme"
+  new_program: "nouveau programme"
+  create_new_program: "créer une nouvelle programmtion"
+  program_in_conflict: "impossible de créer la nouvelle programmation, elle rentre en conflit avec {{title}} (début : {{start_time}}, durée : {{duration}})"
+  program_crated: "programmation {{title}} créée"
 
   date:
     formats:
