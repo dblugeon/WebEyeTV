@@ -12,17 +12,15 @@
       <th><%=link_to "^", programs_url(:order_by=> :start_time, :order=>:asc) %> <%=t :start_time -%> <%=link_to "∨", programs_url(:order_by=> :start_time, :order=>:desc) %></th>
       <th><%=t :duration -%></th>
       <th><%=link_to "^", programs_url(:order_by=> :enabled, :order=>:asc) %> <%=t :active -%> <%=link_to "v", programs_url(:order_by=> :enabled, :order=>:desc) %></th>
-	  <th><%=t :channel_number -%></th>
       <th><%=t :actions -%> </th>
     </tr>
     <% for prog in @programs  -%>
     <tr>
-      <td><%= prog.channel_number -%> </td>
+      <td><%= @map_chans[prog.channel_number] -%></td>
       <td><%= prog.title -%></td>
 	  <td><%=l prog.start_time -%></td>
 	  <td><%= prog.duration -%></td>
       <td><%= prog.enabled? ? t(:s_yes) : t(:s_no) -%> </td>
-  	  <td><%= @map_chans[prog.channel_number] -%></td>
       <td>
         <ul>
 		  <li><%= link_to t(:show), program_url(prog.uid) %></li>
