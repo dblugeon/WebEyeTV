@@ -1,21 +1,21 @@
 class ProgramsController < ApplicationController
   
   def index
-    if request.get?
-      order_by = params[:order_by] ||= :start_time
-      order = params[:order] ||= :asc
-      if(EyeTV::Program.public_instance_methods.include?(order_by.to_s))
-        @programs = eyetv_instance.programs.sort  do |progA, progB|
-          if(order.to_sym == :asc)
-            progA.send(order_by) <=> progB.send(order_by)
-          else
-            progB.send(order_by) <=> progA.send(order_by)
-          end
+    order_by = params[:order_by] ||= :start_time
+    order = params[:order] ||= :asc
+    if(EyeTV::Program.public_instance_methods.include?(order_by.to_s))
+      @programs = eyetv_instance.programs.sort  do |progA, progB|
+        if(order.to_sym == :asc)
+          progA.send(order_by) <=> progB.send(order_by)
+        else
+          progB.send(order_by) <=> progA.send(order_by)
         end
-      else
-        @programs = eyetv_instance.programs
       end
+    else
+      @programs = eyetv_instance.programs
     end
+    @map_chans = Hash.new
+    eyetv_instance.channels.each {|chan| @map_chans[chan.channel_number] = chan.name}
   end
 
   def show
