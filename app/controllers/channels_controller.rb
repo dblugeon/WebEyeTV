@@ -1,7 +1,19 @@
 class ChannelsController < ApplicationController
 
   def index
-    @channels = eyetv_instance.channels
+    order_by = params[:order_by] ||= :channel_number
+    order = params[:order] ||= :asc
+    if(EyeTV::Channel.public_instance_methods.include?(order_by.to_s))
+      @channels = eyetv_instance.channels.sort  do |chanA, chanB|
+        if(order.to_sym == :asc)
+          chanA.send(order_by) <=> chanB.send(order_by)
+        else
+          chanB.send(order_by) <=> chanA.send(order_by)
+        end
+      end
+    else
+      @channels = eyetv_instance.channels
+    end
   end
 
   def edit

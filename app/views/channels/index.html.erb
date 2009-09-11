@@ -7,9 +7,9 @@
 
   <table>
     <tr>
-      <th><%=t :channel_number -%></th>
-      <th><%=t :name -%></th>
-      <th><%=t :active -%></th>
+      <th><%=link_to "^", channels_url(:order_by=> :channel_number, :order=>:asc) %> <%=t :channel_number -%> <%=link_to "v", channels_url(:order_by=> :channel_number, :order=>:desc) %> </th>
+      <th><%=link_to "^", channels_url(:order_by=> :name, :order=>:asc) %>  <%=t :name -%> <%=link_to "v", channels_url(:order_by=> :name, :order=>:desc) %> </th>
+      <th><%=link_to "^", channels_url(:order_by=> :enabled, :order=>:asc) %> <%=t :active -%> <%=link_to "v", channels_url(:order_by=> :enabled, :order=>:desc) %></th>
       <th><%=t :actions -%> </th>
     </tr>
     <% for chan in @channels  -%>

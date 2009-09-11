@@ -7,9 +7,9 @@
 
   <table>
     <tr>
-      <th><%=t :channel_number -%></th>
-      <th><%=t :name -%></th>
-      <th><%=t :start_time -%></th>
+      <th><%=link_to "^", recordings_url(:order_by=> :channel_number, :order=>:asc) %> <%=t :channel_number -%> <%=link_to "v", recordings_url(:order_by=> :channel_number, :order=>:desc) %></th>
+      <th><%=link_to "^", recordings_url(:order_by=> :title, :order=>:asc) %> <%=t :name -%> <%=link_to "v", recordings_url(:order_by=> :title, :order=>:desc) %></th>
+      <th><%=link_to "^", recordings_url(:order_by=> :start_time, :order=>:asc) %> <%=t :start_time -%> <%=link_to "∨", recordings_url(:order_by=> :start_time, :order=>:desc) %></th>
       <th><%=t :duration -%></th>
       <th><%=t :actions -%> </th>
     </tr>
