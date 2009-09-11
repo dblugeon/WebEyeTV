@@ -70,3 +70,15 @@ th, tr, td {
 	border: thin solid;
 	text-align: center;
 }
+
+#fnotice{
+	border: thin solid;
+	color: green;
+	text-align: center;
+}
+
+#ferror{
+	border: thin solid;
+	color: red;
+	text-align: center;
+}

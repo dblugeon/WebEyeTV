@@ -8,8 +8,12 @@
   <%= stylesheet_link_tag 'eye_tv' %>
 </head>
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
+<% if flash[:notice] -%>
+<p id="fnotice"><%= flash[:notice] %></p>
+<% end -%>
+<% if flash[:error] -%>
+<p id="ferror"><%= flash[:error] %></p>
+<% end -%>
 
 <div id='menu'>
 	<ul>
