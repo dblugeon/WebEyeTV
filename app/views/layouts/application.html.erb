@@ -26,6 +26,9 @@
 		<li>
 		<%= link_to t(:recordings), recordings_url %>
 		</li>
+		<li>
+			<%=t(:is_recording) %> <%= controller.is_recording? ? t(:s_yes) : t(:s_no) -%>
+		</li>
 	</ul>
 </div>
 <div id='container'>

@@ -40,6 +40,7 @@ fr:
   create_new_program: "créer une nouvelle programmtion"
   program_in_conflict: "impossible de créer la nouvelle programmation, elle rentre en conflit avec {{title}} (début : {{start_time}}, durée : {{duration}})"
   program_crated: "programmation {{title}} créée"
+  is_recording: "Enregistrement en cours : "
 
   date:
     formats:
