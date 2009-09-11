@@ -33,9 +33,11 @@ class ProgramsController < ApplicationController
   def destroy
     @program = check_eyetv_object(:program, params[:id])
     redirect_to_404(@program)
-    uid = @program.uid
-    @program.delete
-    redirect_to programs_url
+    if @program
+      uid = @program.uid
+      @program.delete
+      redirect_to programs_url
+    end
   end
   
 end

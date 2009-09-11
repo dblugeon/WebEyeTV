@@ -21,8 +21,10 @@ class RecordingsController < ApplicationController
   def destroy
     @recording = check_eyetv_object(:recording, params[:id])
     redirect_to_404(@recording)
-    @recording.delete
-    redirect_to recordings_url
+    if @recording
+      @recording.delete
+      redirect_to recordings_url
+    end
   end
 
 end
