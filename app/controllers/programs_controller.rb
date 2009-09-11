@@ -82,8 +82,20 @@ class ProgramsController < ApplicationController
             params[:enabled] = false
         end
         start_time = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute])
-        params[:start_time]=start_time
-        update_eyetv_object(@program, params)
+        params[:start_time] = start_time
+        conflict_record = eyetv_instance.check_program(:start_time => start_time, :duration => params[:duration], :uid => @program.uid)
+        logger.debug "conflict_record = #{conflict_record}"
+        if conflict_record == nil
+          update_eyetv_object(@program, params)
+          #workaround on the change of tuner_input, this change modify channel number to 0
+          if params.has_key?("channel_number")
+            @program.channel_number = params["channel_number"]
+          end
+          redirect_to programs_url
+        else
+          flash[:error] = t(:program_in_conflict, :title => conflict_record.title, :start_time => conflict_record.start_time, :duration => conflict_record.duration)
+          redirect_to edit_program_path(:id =>@program.uid)
+        end
       end
     else
       redirect_to programs_url
