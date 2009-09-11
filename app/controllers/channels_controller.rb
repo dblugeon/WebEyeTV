@@ -18,7 +18,4 @@ class ChannelsController < ApplicationController
     redirect_to :action=>"index"
   end
 
-  def destroy
-  end
-
 end
