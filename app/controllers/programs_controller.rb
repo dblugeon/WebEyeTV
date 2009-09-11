@@ -31,25 +31,31 @@ class ProgramsController < ApplicationController
   end
 
   def update
-    @program = check_eyetv_object(:program, params[:id])
-    redirect_to_404(@program)
-    if(params[:enabled] == nil)
-        params[:enabled] = false
-    end
-    start_time = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute])
-    params[:start_time]=start_time
-    update_eyetv_object(@program, params)
-    redirect_to programs_url
-  end
-
-  def destroy
-    @program = check_eyetv_object(:program, params[:id])
-    redirect_to_404(@program)
-    if @program
-      uid = @program.uid
-      @program.delete
+    if request.put? or request.post?
+      @program = check_eyetv_object(:program, params[:id])
+      redirect_to_404(@program)
+      if @program
+        if(params[:enabled] == nil)
+            params[:enabled] = false
+        end
+        start_time = Time.local(params[:date][:year], params[:date][:month], params[:date][:day], params[:date][:hour], params[:date][:minute])
+        params[:start_time]=start_time
+        update_eyetv_object(@program, params)
+      end
+    else
       redirect_to programs_url
     end
   end
-  
+
+  def destroy
+    if request.delete? or request.post?
+      @program = check_eyetv_object(:program, params[:id])
+      redirect_to_404(@program)
+      if @program
+        uid = @program.uid
+        @program.delete
+        redirect_to programs_url
+      end  
+    end
+  end
 end

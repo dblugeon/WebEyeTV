@@ -26,17 +26,22 @@ class RecordingsController < ApplicationController
   end
 
   def update
-    @recording = check_eyetv_object(:recording, params[:id])
-    redirect_to_404(@recording)
+    if request.put? or request.post?
+      @recording = check_eyetv_object(:recording, params[:id])
+      redirect_to_404(@recording)
+      #TODO : make update logical
+    end
   end
 
   def destroy
-    @recording = check_eyetv_object(:recording, params[:id])
-    redirect_to_404(@recording)
-    if @recording
-      @recording.delete
-      redirect_to recordings_url
+    if request.delete? or request.post?
+      @recording = check_eyetv_object(:recording, params[:id])
+      redirect_to_404(@recording)
+      if @recording
+        @recording.delete
+      end
     end
+    redirect_to recordings_url
   end
 
 end

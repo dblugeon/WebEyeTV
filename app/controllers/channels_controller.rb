@@ -22,12 +22,14 @@ class ChannelsController < ApplicationController
   end
 
   def update
-    @channel = check_eyetv_object(:channel, params[:id])
-    if(params[:enabled] == nil)
-      params[:enabled] = false
+    if request.post? or request.put?
+      @channel = check_eyetv_object(:channel, params[:id])
+      if(params[:enabled] == nil)
+        params[:enabled] = false
+      end
+      update_eyetv_object(@channel, params)
     end
-    update_eyetv_object(@channel, params)
-    redirect_to :action=>"index"
+    redirect_to channels_url
   end
 
 end
